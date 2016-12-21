@@ -4,19 +4,23 @@ import csv
 
 #------------------------------------------------
 csvpath = 'calibrationLogs.csv'
-consoleSys = 'windows'
+
+consoleSys = 'unix' #set to 'windows' or 'unix'
 
 #------------------------------------------------
 
 def main():
-
+	clear = 'clear'
 	correctResponses = 0
 	trialNumber = 0
 	calibrated = False
 	blockNumber = 1
 	participantID = 0
 
-	
+	#check os for console formatting
+	if consoleSys == 'windows':
+		clear = 'cls'
+
 	participantID = raw_input("participant ID: \n")
 	print "Callibrate accuracy to ~33%\n" 
 	var = raw_input("input 'y' for correct, 'n' for incorrect, and 'new' to initiate a new block\n>")
@@ -27,7 +31,7 @@ def main():
 		trialNumber+=1
 
 		if var=="Y" or var=="y":
-			os.system('cls')
+			os.system(clear)
 			correctResponses+=1
 			accuracy = calcAverage(correctResponses,trialNumber)
 			 
@@ -35,7 +39,7 @@ def main():
 			print("| accuracy: "+str(accuracy))
 			print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
 		if var=="N" or var=="n":
-			os.system('cls')
+			os.system(clear)
 			accuracy = calcAverage(correctResponses,trialNumber)
 			print " _________\n| block "+str(blockNumber)+" |\n------------------------------------"
 			if accuracy > 0.3 and accuracy < 0.4:
@@ -44,7 +48,7 @@ def main():
 				print("| accuracy: "+str(accuracy))
 			print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
 		if var=="new":
-			os.system('cls')
+			os.system(clear)
 			correctResponses = 0
 			trialNumber = 0
 			blockNumber +=1
@@ -52,7 +56,7 @@ def main():
 		if var == "done":
 			exit()
 		if var == "reset":
-			os.system('cls')
+			os.system(clear)
 			trialNumber = 0
 			correctResponses = 0
 			accuracy = 0
@@ -61,7 +65,7 @@ def main():
 			print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
 			print("block settings reset!")
 		if var == "nuclear option":
-			os.system('cls')
+			os.system(clear)
 			trialNumber = 0
 			correctResponses = 0
 			block = 0
