@@ -15,6 +15,3 @@ How to use:
 Set `consoleSys` to `"windows"` or `"unix"` for prettier formatting.
 
 Requires python 2.7.
-
-How to use:
-A block: a number of trials at a given difficulty level.
