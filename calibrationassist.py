@@ -5,7 +5,7 @@ import csv
 #------------------------------------------------
 csvpath = 'calibrationLogs.csv'
 
-consoleSys = 'unix' #set to 'windows' or 'unix'
+consoleSys = 'windows' #set to 'windows' or 'unix'
 
 #------------------------------------------------
 
@@ -36,16 +36,13 @@ def main():
 			accuracy = calcAverage(correctResponses,trialNumber)
 			 
 			print " _________\n| block "+str(blockNumber)+" |\n------------------------------------"
-			print("| accuracy: "+str(accuracy))
+			print accuracyFormatting(accuracy)
 			print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
 		if var=="N" or var=="n":
 			os.system(clear)
 			accuracy = calcAverage(correctResponses,trialNumber)
 			print " _________\n| block "+str(blockNumber)+" |\n------------------------------------"
-			if accuracy > 0.3 and accuracy < 0.4:
-				print("| accuracy: *~"+str(accuracy)+"~*")
-			else:
-				print("| accuracy: "+str(accuracy))
+			print accuracyFormatting(accuracy)
 			print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
 		if var=="new":
 			os.system(clear)
@@ -65,12 +62,17 @@ def main():
 			print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
 			print("block settings reset!")
 		if var == "nuclear option":
-			os.system(clear)
-			trialNumber = 0
-			correctResponses = 0
-			block = 0
-			accuracy = 0
-			print("complete reset")
+			confirm = raw_input("Will completely wipe history, are you sure? (y/n): ")
+			if (confirm=="y"):
+				os.system(clear)
+				trialNumber = 0
+				correctResponses = 0
+				blockNumber = 0
+				accuracy = 0
+				print " _________\n| block "+str(blockNumber)+" |\n------------------------------------"
+				print("| accuracy: "+str(accuracy))
+				print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
+				print("Complete reset!")
 		if var == "export":
 			noiseLevels = raw_input("noise level: ")
 			signalLevels = raw_input("signal level: ")
@@ -108,6 +110,12 @@ def readCSV(csvpath):
 		for row in reader:
 			csvSoFar.append(row)
 		return csvSoFar
+
+def accuracyFormatting(accuracy):
+	if accuracy > 0.29 and accuracy < 0.4:
+		return "| accuracy: *~"+str(accuracy)+"~*"
+	else:
+		return "| accuracy: "+str(accuracy)
 
 #------------------------------------------------
 
