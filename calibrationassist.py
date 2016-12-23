@@ -50,7 +50,7 @@ def main():
 			trialNumber = 0
 			blockNumber +=1
 			print " _________\n| block "+str(blockNumber)+" |\n------------------------------------\n\nNew block!"
-		if var == "done":
+		if var == "done" or var == "exit":
 			exit()
 		if var == "reset":
 			os.system(clear)
@@ -84,7 +84,7 @@ def main():
 				writeCSV(participantID,noiseLevels,signalLevels,placement)
 				print "    Complete!"
 		if var == "...":
-			print "    commands:\n        y: correct response\n        n: incorrect response\n        new: initiate new block\n        export: export .csv\n        reset: reset the current block (if you made a mistake)\n        nuclear option: complete reset (start again from block 1)\n        done: exit program"
+			print "    commands:\n        y: correct response\n        n: incorrect response\n        new: initiate new block\n        export: export .csv\n        reset: reset the current block (if you made a mistake)\n        nuclear option: complete reset (start again from block 1)\n        exit: exit program"
 
 
 		var = raw_input("[y | n | new | export | ...]\n> ")

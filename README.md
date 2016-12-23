@@ -10,7 +10,7 @@ How to use:
  - `export`: export settings as .csv  
  	- includes info about: participant ID, noise levels, signal levels, and actuator placement
  - `reset`: reset current block data
- - `done`: nicely exits the program
+ - `exit`: nicely exits the program
 
 Set `consoleSys` to `"windows"` or `"unix"` for prettier formatting.
 
