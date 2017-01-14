@@ -112,7 +112,7 @@ def main():
 
 #----------------------------------------------------------------------
 # calcAverage
-# calculates an mean.
+# calculates a mean.
 #
 # Int correct
 # Int trials
