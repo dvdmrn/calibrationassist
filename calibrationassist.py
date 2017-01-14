@@ -37,8 +37,7 @@ def main():
 
 		#correct
 		if var=="Y" or var=="y":
-			#refresg screen
-			os.system(clear)
+			os.system(clear) #refresh screen
 			correctResponses+=1
 			accuracy = calcAverage(correctResponses,trialNumber)
 			 
