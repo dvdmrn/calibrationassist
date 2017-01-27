@@ -7,13 +7,13 @@ How to use:
  - first indicate whether you are calibrating words or phrases
 
  - if words:
-   - `y`: correct response
-   - `n`: incorrect response
+    - `y`: correct response
+    - `n`: incorrect response
  
  - if phrases:
-   - enter the number of lexical categories in the phrase that the subject correctly
+    - enter the number of lexical categories in the phrase that the subject correctly
    	 indentifies
-   - then enter the path to .csv file
+    - then enter the path to .csv file
 
  - for both:
  - `new`: initiate new block

@@ -46,27 +46,32 @@ def main():
 def main_phrases(calibrated, phrases):
 	clear = 'clear' 
 	correctResponses = 0
+	sumOfScores = 0
 	trialNumber = 0
 	blockNumber = 1 
 	participantID = 0
 
 	participantID = raw_input("participant ID: \n")
 	print "Callibrate accuracy to ~33%\n"
-	print("Input the number of lexical category items that the subject identifies correctly as the score")
+	print("Input the number of lexical category items that the subject identifies \ncorrectly as the score")
+	print("")
+
 	for i in phrases:
 		trialNumber+=1
 		print("Phrase: " + i)
-		var = raw_input("Score: \n")
+		print("Lexical Words: " + str(phrases[i]))
+		var = raw_input("Score: ")
 		
 		# score
 		if var=="0" or var=="1" or var=="2" or var=="3":
 			os.system(clear) #refresh screen
-			correctResponses = int(var)/phrases[i]
-			accuracy = calcAverage(correctResponses,trialNumber)
+			correctResponses = int(var)
+			sumOfScores += int(var)/phrases[i]
+			accuracy = calcAverage(sumOfScores,trialNumber)
 			print " _________\n| block "+str(blockNumber)+" |\n------------------------------------"
 			print accuracyFormatting(accuracy)
-			print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
-		
+			print "| trial score: "+str(correctResponses)+" out of "+str(phrases[i])+"| trial n: "+str(trialNumber)+"\n"
+			
 		#new block
 		if var=="new":
 			os.system(clear)
@@ -87,7 +92,7 @@ def main_phrases(calibrated, phrases):
 			accuracy = 0
 			print " _________\n| block "+str(blockNumber)+" |\n------------------------------------"
 			print("| accuracy: "+str(accuracy))
-			print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
+			print "| trial score: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
 			print("block settings reset!")
 
 		#start again
@@ -101,7 +106,7 @@ def main_phrases(calibrated, phrases):
 				accuracy = 0
 				print " _________\n| block "+str(blockNumber)+" |\n------------------------------------"
 				print("| accuracy: "+str(accuracy))
-				print "| correct: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
+				print "| trial score: "+str(correctResponses)+"| trial n: "+str(trialNumber)+"\n"
 				print("Complete reset!")
 
 		#exports csv
